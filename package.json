@@ -1,0 +1,13 @@
+{
+  "name": "blog",
+  "version": "1.1.6",
+  "description": "",
+  "main": "app.js",
+  "dependencies": {},
+  "devDependencies": {},
+  "scripts": {
+    "p": "npm version patch && npm publish"
+  },
+  "author": "",
+  "license": ""
+}

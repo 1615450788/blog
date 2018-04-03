@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<style>
+    *{
+        padding: 0;
+        margin: 0;
+    }
+    .container {
+        width: 100%;
+        height: 500px;
+        position: relative;
+        min-width: 500px;
+        overflow: scroll;
+
+    }
+    .left{
+        width:100px;
+        position: absolute;
+    }
+    .right{
+        position: absolute;
+        left:100px;
+        right:0;
+        bottom:0;
+        top:0;
+        overflow: hidden;
+    }
+    .drag{
+        cursor: col-resize;
+        position: absolute;
+        height:100%;
+        left:95px;
+        z-index: 2;
+        width:10px;
+        top:0;
+        bottom:0;
+    }
+    .left,
+    .right {
+        height:100%;
+        border: 1px solid #ccc;
+        font-size: 22px;
+        color: #333;
+        font-weight: bold;
+        text-align: center;
+        line-height: 500px;
+    }
+    .right {
+        border-left: 0 none;
+    }
+</style>
+<body>
+<div class="container">
+    <div class="left">left<div class="drag"></div></div>
+    <div class="right">right</div>
+</div>
+</body>
+<script>
+    function $(selector) {
+        return document.querySelector(selector);
+    }
+    function dragResize() {
+        this.drag=$('.drag');
+        this.left=$('.left');
+        this.right=$('.right');
+        this.container=$('.container');
+        this.init();
+    }
+    dragResize.prototype.init=function () {
+        document.onmousedown=()=>this.onmousedown();
+        document.onmouseup=()=>this.onmouseup();
+    };
+    dragResize.prototype.onmousemove=function(ev){
+        let iEvent=ev||event;
+        let clientX=iEvent.clientX;
+        if(clientX>=10&&clientX<=(this.container.offsetWidth-40)){
+            this.drag.style.left=(clientX-5)+'px';
+            this.left.style.width=clientX+'px';
+            this.right.style.left=clientX+'px';
+        }
+    };
+    dragResize.prototype.onmousedown=function () {
+        document.onmousemove=()=>this.onmousemove();
+    };
+    dragResize.prototype.onmouseup=function () {
+        document.onmousemove=null;
+    };
+    window.onload=function(){
+        new dragResize();
+    };
+</script>
+</html>
