@@ -4,6 +4,7 @@
 ## 目录
 - 前端基础
     - [HTTP协议概述](/doc/http.md)
+    - [事件模型](/doc/eventModel.md)
 - 阿里面试题
     - [相邻数组去重](/testQuestion/removalRepetition.js)
     - [拖曳自适应布局](/testQuestion/dragResize.html)
