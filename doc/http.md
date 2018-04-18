@@ -26,3 +26,33 @@ HTTP协议是Hyper Text Transfer Protocol（超文本传输协议）的缩写,�
 - URL就是`https://github.com/1615450788/resume`它标识了一个资源所在位置与定位资源的方式
 - URN就是`github.com/1615450788/resume#path?name=1`它标识了资源但是没有说明资源的定位方式
 
+## request部分报文结构
+http 协议规定，http request部分报文分三部分。第一部分是请求行，第二部分是请求头，第三部分是请求实体。
+- 第一行为请求行
+    - 第一个单词为请求的方法。比如GET(请求服务端数据)，post(更新数据到服务端)，DELETE(删除服务端数据)，PUT(新增数据到服务端) OPTION，TRACE等等。
+    - 第二个单词为请求的相对路径
+    - 第三个单词为http版本。目前有HTTP/1.1 HTTP/1.0 HTTP/0.9。目前几乎所有的浏览器和httpClient客户端都是HTTT/1.1。除非你的浏览器或者HttClient很老了（建议赶紧升级吧）。
+    - 最后以两个字节\r\n（13和10也就是回车+换行结束）做为请求行的标示结束。
+
+注意http规定请求行中，第一个，第二个，第三个单词间必须要有一个空格
+
+大家都知道，通过网络传输，传输的都是bit位（由Byte字节转换），服务端接受到http request部分后，读出来的数据也是Byte流。服务端是怎样截取Byte流的，比如什么时候header结束，http body开始。
+
+通过两个连续的字节13和10（也就是\r\n）。表示http header结束，http body开始
+
+http header中通过两个字节13 10区分每个header。看上图每个http头部都是以\r\n结束。Header包含两部分，一个是headerName，一个是headerValue，headerName和headerValue间用一个“:”冒号和” ”一个空格分开，比如
+```
+Content-length: 10
+```
+http body的结束，是通过head中的Content-length指定的，以conten-length的大小，计算body的长度。（当然有些是以传输块指定的body，content-length无法指定，则会按相应的规则解析body中字节流，拿到每块的大小，然后再解析）
+
+## response部分报文结构
+http response报文协议结构和http request报文协议结构几乎相同，第一部分为应答状态行，第二部分为应答头，第三部分为应答实体
+- 第一行为响应状态行
+    - 第一个单词为http协议值，比如http/0.9 http/1.0 htpp/1.1 
+    - 第二个单词为响应的状态码。比如 200表示服务端处理该请求成功，4XX开头是客户端发的http resquest有问题，5XX为服务端内部处理出错。3XX为页面转发
+http response 头部字段和http response 实体部分也是通过两个连续的回车(13)换行(10)符进行分割的。
+
+http response header之间和header内容中的结构和分割和http request header规则一样。
+
+http response结束，也是通过http response header中的Content-length字段的值确认的（有时，服务端生成动态内容，body的大小无法计算，有时以header中的Transfer-Encoding为准，http协议规定有Transfer-Encoding，以Transfer-Encoding为准，没有Transfer-Encoding以Content-length为准）
