@@ -28,12 +28,20 @@ HTTP协议是Hyper Text Transfer Protocol（超文本传输协议）的缩写,�
 
 ## request部分报文结构
 http 协议规定，http request部分报文分三部分。第一部分是请求行，第二部分是请求头，第三部分是请求实体。
-- 第一行为请求行
+- 第一部分（行）为请求行
     - 第一个单词为请求的方法。比如GET(请求服务端数据)，post(更新数据到服务端)，DELETE(删除服务端数据)，PUT(新增数据到服务端) OPTION，TRACE等等。
     - 第二个单词为请求的相对路径
     - 第三个单词为http版本。目前有HTTP/1.1 HTTP/1.0 HTTP/0.9。目前几乎所有的浏览器和httpClient客户端都是HTTT/1.1。除非你的浏览器或者HttClient很老了（建议赶紧升级吧）。
+    - http规定请求行中，第一个、第二个、第三个单词间必须要有一个空格
     - 最后以两个字节\r\n（13和10也就是回车+换行结束）做为请求行的标示结束。
-
+- 第二部分请求头
+    - 请求头由多行`headerName: headerValue`对组成，每行一对，用一个`:`冒号和` `一个空格分开，通过`\r\n`区分每对`header`
+    - 请求头部的最后会有一个空行，表示请求头部结束，接下来为请求正文，这一行非常重要，必不可少
+- 第三部分请求实体（正文）
+    - 请求实体为特定格式的字符串，格式由`Content-Type`决定
+    - GET请求方法没有请求正文
+    
+示例如下：
 ```
 GET /search?hl=zh-CN&source=hp&q=domety&aq=f&oq= HTTP/1.1  
 Accept: image/gif, image/x-xbitmap, image/jpeg, image/pjpeg, application/vnd.ms-excel, application/vnd.ms-powerpoint, 
@@ -66,17 +74,11 @@ FxlRugatx63JLv7CWMD6UB_O_r
 hl=zh-CN&source=hp&q=domety  
 ```
 
-注意http规定请求行中，第一个，第二个，第三个单词间必须要有一个空格
-
 大家都知道，通过网络传输，传输的都是bit位（由Byte字节转换），服务端接受到http request部分后，读出来的数据也是Byte流。服务端是怎样截取Byte流的，比如什么时候header结束，http body开始。
 
-通过两个连续的字节13和10（也就是\r\n）。表示http header结束，http body开始
+通过两个连续的字节`13`和`10`，也就是`\r\n`（回车换行符）。表示`http header`结束，`http body`开始
 
-http header中通过两个字节13 10区分每个header。看上图每个http头部都是以\r\n结束。Header包含两部分，一个是headerName，一个是headerValue，headerName和headerValue间用一个“:”冒号和” ”一个空格分开，比如
-```
-Content-length: 10
-```
-http body的结束，是通过head中的Content-length指定的，以conten-length的大小，计算body的长度。（当然有些是以传输块指定的body，content-length无法指定，则会按相应的规则解析body中字节流，拿到每块的大小，然后再解析）
+http body的结束，是通过`header`中的`Content-length`指定的，以`Content-length`的大小，计算body的长度，有些是以传输块指定的`body`，`Content-length`无法指定，则会按相应的规则解析`body`中字节流，拿到每块的大小，然后再解析
 
 ## response部分报文结构
 http response报文协议结构和http request报文协议结构几乎相同，第一部分为应答状态行，第二部分为应答头，第三部分为应答实体
