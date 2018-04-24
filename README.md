@@ -9,6 +9,7 @@
     - [VUE生命周期(待完善)](/doc/lifecycle.md)
 - 解决方案
     - [单点登录(待补充)]()
+    - [SemVer-语义化版本控制规范]()
 - 面试题
     - [相邻数组去重](/testQuestion/removalRepetition.js)
     - [拖曳自适应布局](/testQuestion/dragResize.html)
