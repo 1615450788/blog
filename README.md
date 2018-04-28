@@ -3,13 +3,14 @@
 
 ## 目录
 - 前端基础
-    - [HTTP协议概述(待完善请求与响应内容)](/doc/http.md)
+    - [HTTP协议概述(待完善响应内容)](/doc/http.md)
     - [事件模型](/doc/eventModel.md)
     - [css3计算(待补充)]()
 - 框架相关
-    - [VUE生命周期(待补充)]()
+    - [VUE生命周期(待完善)](/doc/lifecycle.md)
 - 解决方案
     - [单点登录(待补充)]()
+    - [SemVer-语义化版本控制规范]()
 - 面试题
     - [相邻数组去重](/testQuestion/removalRepetition.js)
     - [拖曳自适应布局](/testQuestion/dragResize.html)
