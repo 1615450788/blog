@@ -5,6 +5,7 @@
 - 前端基础
     - [HTTP协议概述(待完善响应内容)](/doc/http.md)
     - [事件模型](/doc/eventModel.md)
+    - [BFC](/doc/bfc.md)
 - 框架相关
     - [VUE生命周期(待完善)](/doc/lifecycle.md)
 - 解决方案
