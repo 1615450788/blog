@@ -10,7 +10,7 @@
 - 框架相关
     - [VUE生命周期(待完善)](/doc/lifecycle.md)
 - 解决方案
-    - [单点登录(待补充)]()
+    - [单点登录SSO](/doc/sso.md)
     - [SemVer-语义化版本控制规范](/doc/semver.md)
 - 面试题
     - [相邻数组去重](/testQuestion/removalRepetition.js)
