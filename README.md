@@ -12,6 +12,7 @@
 - 解决方案
     - [单点登录SSO](/doc/sso.md)
     - [SemVer-语义化版本控制规范](/doc/semver.md)
+    - [前端静态配置文件实现（占坑）]()
 - 面试题
     - [相邻数组去重](/testQuestion/removalRepetition.js)
     - [拖曳自适应布局](/testQuestion/dragResize.html)
