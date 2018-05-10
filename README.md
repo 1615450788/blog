@@ -9,6 +9,7 @@
     - [CSS3:calc计算属性](/doc/calc.md)、
     - [npm version相关（占坑）]
     - [npm link实战使用（占坑）]
+    - [Git rebase实战使用（占坑）]
 - 框架相关
     - [VUE生命周期(待完善)](/doc/lifecycle.md)
     - [模块的内聚和耦合](/doc/cohesion.md)
