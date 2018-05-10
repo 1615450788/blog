@@ -10,6 +10,7 @@
 - 框架相关
     - [VUE生命周期(待完善)](/doc/lifecycle.md)
     - [模块的内聚和耦合](/doc/cohesion.md)
+    - [Vue组件通信方案分析(占坑)]()
 - 解决方案
     - [单点登录SSO](/doc/sso.md)
     - [SemVer-语义化版本控制规范](/doc/semver.md)
