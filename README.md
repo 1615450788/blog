@@ -7,7 +7,7 @@
     - [事件模型](/doc/eventModel.md)
     - [BFC](/doc/bfc.md)
     - [CSS3:calc计算属性](/doc/calc.md)
-    - [npm version相关（占坑）]
+    - [npm version相关](/doc/npmVersion.md)
     - [npm link实战使用（占坑）]
     - [Git rebase实战使用（占坑）]
 - 框架相关
