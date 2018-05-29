@@ -4,11 +4,12 @@
 
 npm版本管理指令，主要用于对现有版本进行升级，同时生成同名的tag与commit记录；
 
-## major
+## 升级主版本号(major)
 
 - 使用方式：`npm version major`
 - npm tag: `latest`
 - 安装方式：`npm i package@latest`
+- 原则：当你做了`非兼容`的改动时，请使用这句命令升级主版本
 
 升级`主版本号`，同时重置后续版本号，如：
 
@@ -19,11 +20,12 @@ npm version major
 //新Tag：v2.0.0
 ```
 
-## minor
+## 升级次版本号(minor)
 
 - 使用方式：`npm version minor`
 - npm tag: `latest`
 - 安装方式：`npm i package@latest`
+- 原则：当你做了`向下兼容`的功能性`新增`时，请使用这句命令升级次版本
 
 升级`次版本号`，同时重置后续版本号，如：
 
@@ -34,11 +36,12 @@ npm version minor
 //新Tag：v1.2.0
 ```
 
-## patch
+## 升级修订号(patch)
 
 - 使用方式：`npm version patch`
 - npm tag: `latest`
 - 安装方式：`npm i package@latest`
+- 原则：当你做了`向下兼容`的问题`修复`时，请使用这句命令升级修订号
 
 升级`修订号`，有以下两种情况：
 1. 对非预发布版本进行升级，会升级`修订号`，如：
@@ -59,11 +62,12 @@ npm version patch
 //新Tag：v1.1.2
 ```
 
-## prerelease
+## 升级预发布号(prerelease)
 
 - 使用方式：`npm version prerelease`
 - npm tag: `beta`
 - 安装方式：`npm i package@beta`
+- 原则：当你做了`向下兼容`的问题修复但是需要`验证`时，请使用这句命令升级预发布号
 
 升级`预发布号`，有以下两种请求：
 
