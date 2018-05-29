@@ -5,6 +5,8 @@ npm版本管理指令，主要用于对现有版本进行升级，同时生成�
 ## major
 
 - 使用方式：`npm version major`
+- npm tag: `latest`
+- 安装方式：`npm i package@latest`
 
 升级`主版本号`，同时重置后续版本号，如：
 
@@ -18,6 +20,8 @@ npm version major
 ## minor
 
 - 使用方式：`npm version minor`
+- npm tag: `latest`
+- 安装方式：`npm i package@latest`
 
 升级`次版本号`，同时重置后续版本号，如：
 
@@ -31,6 +35,8 @@ npm version minor
 ## patch
 
 - 使用方式：`npm version patch`
+- npm tag: `latest`
+- 安装方式：`npm i package@latest`
 
 升级`修订版本号`，有以下两种情况：
 1. 对非预发布版本进行升级，会升级修订版本号，如：
@@ -54,6 +60,8 @@ npm version patch
 ## prerelease
 
 - 使用方式：`npm version prerelease`
+- npm tag: `beta`
+- 安装方式：`npm i package@beta`
 
 升级`预发布版本号`，有以下两种请求：
 
