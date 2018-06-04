@@ -8,6 +8,7 @@
     - [BFC](/doc/bfc.md)
     - [CSS3:calc计算属性](/doc/calc.md)
     - [npm version相关](/doc/npmVersion.md)
+    - [函数使用准则](/doc/function.md)
     - [npm link实战使用（占坑）]
     - [Git rebase实战使用（占坑）]
 - 框架相关
