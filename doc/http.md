@@ -37,6 +37,36 @@ http 协议规定，http request部分报文分三部分。第一部分是请求
 - 第二部分请求头
     - 请求头由多行`headerName: headerValue`对组成，每行一对，用一个`:`冒号和` `一个空格分开，通过`\r\n`区分每对`header`
     - 请求头部的最后会有一个空行，表示请求头部结束，接下来为请求正文，这一行非常重要，必不可少
+    - `Accept: text/plain, text/html` --指定客户端能够接收的内容类型
+    - `Accept-Charset: iso-8859-5` --浏览器可以接受的字符编码集
+    - `Accept-Encoding: compress, gzip` --指定浏览器可以支持的web服务器返回内容压缩编码类型
+    - `Accept-Language: en,zh` --浏览器可接受的语言
+    - `Accept-Ranges: bytes` --可以请求网页实体的一个或者多个子范围字段
+    - `Authorization: Basic QWxhZGRpbjpvcGVuIHNlc2FtZQ==` --HTTP授权的授权证书
+    - `Cache-Control: no-cache` --指定请求和响应遵循的缓存机制
+    - `Connection: close` --表示是否需要持久连接。（HTTP 1.1默认进行持久连接）
+    - `Cookie: $Version=1; Skin=new;` --HTTP请求发送时，会把保存在该请求域名下的所有cookie值一起发送给web服务器。
+    - `Content-Length: 348` --请求的内容长度
+    - `Content-Type: application/x-www-form-urlencoded` --请求的与实体对应的MIME信息
+    - `Date: Tue, 15 Nov 2010 08:12:31 GMT` --请求发送的日期和时间
+    - `Expect: 100-continue` --请求的特定的服务器行为	
+    - `From: user@email.com` --发出请求的用户的Email
+    - `Host: www.zcmhi.com` --指定请求的服务器的域名和端口号
+    - `If-Match: "737060cd8c284d8af7ad3082f209582d"` --只有请求内容与实体相匹配才有效
+    - `If-Modified-Since: Sat, 29 Oct 2010 19:43:31 GMT` --如果请求的部分在指定时间之后被修改则请求成功，未被修改则返回304代码
+    - `If-None-Match: "737060cd8c284d8af7ad3082f209582d"` --如果内容未改变返回304代码，参数为服务器先前发送的Etag，与服务器回应的Etag比较判断是否改变
+    - `If-Range: "737060cd8c284d8af7ad3082f209582d"` --如果内容未改变返回304代码，参数为服务器先前发送的Etag，与服务器回应的Etag比较判断是否改变
+    - `If-Unmodified-Since: Sat, 29 Oct 2010 19:43:31 GMT` --只在实体在指定时间之后未被修改才请求成功
+    - `Max-Forwards: 10` --限制信息通过代理和网关传送的时间	
+    - `Pragma: no-cache` --用来包含实现特定的指令
+    - `Proxy-Authorization: Basic QWxhZGRpbjpvcGVuIHNlc2FtZQ==` --连接到代理的授权证书
+    - `Range: bytes=500-999` --只请求实体的一部分，指定范围
+    - `Referer: http://www.zcmhi.com/archives/71.html` --先前网页的地址，当前请求网页紧随其后,即来路
+    - `TE: trailers,deflate;q=0.5` --客户端愿意接受的传输编码，并通知服务器接受接受尾加头信息
+    - `Upgrade: HTTP/2.0, SHTTP/1.3, IRC/6.9, RTA/x11` --向服务器指定某种传输协议以便服务器进行转换（如果支持）
+    - `User-Agent: Mozilla/5.0 (Linux; X11)` --User-Agent的内容包含发出请求的用户信息
+    - `Via: 1.0 fred, 1.1 nowhere.com (Apache/1.1)` --通知中间网关或代理服务器地址，通信协议
+    - `Warn: 199 Miscellaneous warning` --关于消息实体的警告信息
 - 第三部分请求实体（正文）
     - 请求实体为特定格式的字符串，格式由`Content-Type`决定
     - GET请求方法没有请求正文
@@ -81,10 +111,30 @@ hl=zh-CN&source=hp&q=domety
 http body的结束，是通过`header`中的`Content-length`指定的，以`Content-length`的大小，计算body的长度，有些是以传输块指定的`body`，`Content-length`无法指定，则会按相应的规则解析`body`中字节流，拿到每块的大小，然后再解析
 
 ## response部分报文结构
-http response报文协议结构和http request报文协议结构几乎相同，第一部分为应答状态行，第二部分为应答头，第三部分为应答实体
+http response报文协议结构和http request报文协议结构几乎相同，第一部分为响应行，第二部分为响应头，第三部分为响应实体
 - 第一行为响应状态行
     - 第一个单词为http协议值，比如http/0.9 http/1.0 htpp/1.1 
     - 第二个单词为响应的状态码。比如 200表示服务端处理该请求成功，4XX开头是客户端发的http resquest有问题，5XX为服务端内部处理出错。3XX为页面转发
+- 第二部分响应头
+    - 同请求头
+    - `Location: http://www.it315.org/index.jsp` --重定向地址。通常和302状态码配合使用，完成请求重定向效果
+    - `Server:apache tomcat` --服务器类型
+    - `Content-Encoding: gzip` --服务器发送给浏览器的数据压缩格式
+    - `Content-Length: 80` --服务器发送给浏览器数据长度
+    - `Content-Language: zh-cn` --服务器发送给浏览器数据语言
+    - `Content-Type: text/html; charset=GB2312` --服务器发送给浏览器数据类型
+    - `Last-Modified: Tue, 11 Jul 2000 18:23:51GMT` --服务器资源最后修改时间
+    - `Refresh: 1;url=http://www.it315.org` --定时刷新或每隔n秒跳转页面
+    - `Content-Disposition: attachment; filename=aaa.zip` --告诉浏览器以下载方式打开资源
+    - `Transfer-Encoding: chunked`
+    - `Set-Cookie:SS=Q0=5Lb_nQ; path=/search` --服务器发送给浏览器的cookie信息 
+    - `Expires:-1` --建议浏览器不使用缓存
+    - `Cache-Control:no-cache`
+    - `Pragma:no-cache`
+    - `Connection: close/Keep-Alive` --服务器和浏览器连接状态。close：关闭连接。keep-alive:保持连接。
+    - `Date: Tue, 11 Jul 2000 18:23:51 GMT` --响应发送的时间
+- 第三部分响应实体
+    - 同请求实体
     
 ```
 HTTP/1.1 200 OK
