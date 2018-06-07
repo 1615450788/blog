@@ -3,7 +3,7 @@
 
 ## 目录
 - 前端基础
-    - [HTTP协议概述(待完善响应内容)](/doc/http.md)
+    - [HTTP协议概述](/doc/http.md)
     - [事件模型](/doc/eventModel.md)
     - [BFC](/doc/bfc.md)
     - [CSS3:calc计算属性](/doc/calc.md)
