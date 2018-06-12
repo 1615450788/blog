@@ -9,6 +9,7 @@
     - [CSS3:calc计算属性](/doc/calc.md)
     - [npm version相关](/doc/npmVersion.md)
     - [函数使用准则](/doc/function.md)
+    - [缓存策略](/doc/cache.md)
     - [npm link（占坑）]
     - [Git rebase（占坑）]
 - 框架相关
